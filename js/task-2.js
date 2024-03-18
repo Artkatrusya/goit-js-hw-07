@@ -28,13 +28,17 @@ const images = [
   },
 ];
 
-const list = document.querySelector(".gallery");
 
-for (const i of images) {
-  const liItem = document.createElement("li")
-  const imgItem = document.createElement("img")
-  imgItem.src = i.url;
-  imgItem.alt = i.alt;
-  liItem.append(imgItem);
-  list.append(liItem);
-}
+const gallery = document.querySelector('.gallery');
+const fragment = document.createDocumentFragment();
+
+images.forEach(image => {
+  const li = document.createElement('li');
+  const img = document.createElement('img');
+  img.src = image.url;
+  img.alt = image.alt;
+  li.appendChild(img);
+  fragment.appendChild(li);
+});
+
+gallery.appendChild(fragment);
